@@ -291,6 +291,45 @@ canvas.addEventListener('mousemove', (e) => {
 canvas.addEventListener('mouseup', () => { dragIndex = -1; });
 canvas.addEventListener('mouseleave', () => { dragIndex = -1; });
 
+// ── Fan Chat ───────────────────────────────────────────────────────────
+
+const chatMessages = document.getElementById('chat-messages');
+const chatForm = document.getElementById('chat-form');
+const chatInput = document.getElementById('chat-text');
+let myName = 'Fan ' + Math.random().toString(36).slice(2, 6).toUpperCase();
+
+function addChatMessage(sender, text, isLocal) {
+  const msg = document.createElement('div');
+  msg.className = `chat-msg chat-msg--${isLocal ? 'local' : 'remote'}`;
+  msg.innerHTML = `
+    <div class="chat-msg__sender">${sender}</div>
+    <div>${text}</div>
+  `;
+  chatMessages.appendChild(msg);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+chatForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const text = chatInput.value.trim();
+  if (!text) return;
+
+  // Add locally
+  addChatMessage(myName, text, true);
+
+  // Broadcast to peers
+  p2p.broadcast({ type: 'CHAT_MESSAGE', payload: { sender: myName, text } });
+
+  chatInput.value = '';
+});
+
+// Receive chat from peers
+p2p.on('message', (msg) => {
+  if (msg.type === 'CHAT_MESSAGE') {
+    addChatMessage(msg.payload.sender, msg.payload.text, false);
+  }
+});
+
 // ── Prediction Market ──────────────────────────────────────────────────
 
 function renderPredictions() {

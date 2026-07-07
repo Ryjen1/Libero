@@ -50,6 +50,10 @@
       <span class="tab__icon">🎯</span>
       Predictions
     </button>
+    <button class="tab" data-tab="chat">
+      <span class="tab__icon">💬</span>
+      Fan Chat
+    </button>
     <button class="tab" data-tab="synclog">
       <span class="tab__icon">📡</span>
       P2P Sync Logs
@@ -211,6 +215,24 @@
             <p class="empty-state">No scores yet.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Fan Chat -->
+    <section class="panel" id="panel-chat">
+      <div class="panel__header">
+        <h2>Fan Chat</h2>
+        <p class="panel__subtitle">Peer-to-peer messaging — no server, no accounts, just fans talking.</p>
+      </div>
+
+      <div class="chat-layout">
+        <div class="chat-messages" id="chat-messages">
+          <div class="chat-system">Connected to P2P network. Messages are end-to-end between peers.</div>
+        </div>
+        <form class="chat-input" id="chat-form">
+          <input type="text" id="chat-text" placeholder="Type a message..." class="input" autocomplete="off" />
+          <button type="submit" class="btn btn--primary">Send</button>
+        </form>
       </div>
     </section>
 
