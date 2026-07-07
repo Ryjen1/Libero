@@ -1,0 +1,26 @@
+{
+  "name": "libero",
+  "version": "0.1.0",
+  "description": "Libero — Decentralized Football Operating System",
+  "main": "src/frontend/index.html",
+  "type": "module",
+  "pear": {
+    "name": "libero",
+    "type": "desktop"
+  },
+  "scripts": {
+    "start": "pear run .",
+    "dev": "pear run --dev ."
+  },
+  "dependencies": {
+    "@qvac/sdk": "^0.14.1",
+    "hyperswarm": "^4.17.0",
+    "hypercore": "^11.33.5",
+    "hyperbee": "^2.27.3",
+    "corestore": "^7.11.0",
+    "random-access-memory": "^6.2.1"
+  },
+  "keywords": ["football", "p2p", "tether", "hackathon"],
+  "author": "",
+  "license": "MIT"
+}
