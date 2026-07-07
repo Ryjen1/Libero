@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" fill="none">
+  <!-- Background -->
+  <rect width="400" height="120" rx="16" fill="#080C0A"/>
+
+  <!-- Football icon -->
+  <circle cx="56" cy="60" r="32" fill="#00E676" opacity="0.15"/>
+  <circle cx="56" cy="60" r="24" stroke="#00E676" stroke-width="2" fill="none"/>
+  <!-- Pentagon pattern on ball -->
+  <path d="M56 38 L66 45 L63 57 L49 57 L46 45 Z" stroke="#00E676" stroke-width="1.5" fill="none"/>
+  <line x1="56" y1="38" x2="56" y2="32" stroke="#00E676" stroke-width="1.5"/>
+  <line x1="66" y1="45" x2="72" y2="40" stroke="#00E676" stroke-width="1.5"/>
+  <line x1="63" y1="57" x2="68" y2="65" stroke="#00E676" stroke-width="1.5"/>
+  <line x1="49" y1="57" x2="44" y2="65" stroke="#00E676" stroke-width="1.5"/>
+  <line x1="46" y1="45" x2="40" y2="40" stroke="#00E676" stroke-width="1.5"/>
+
+  <!-- P2P nodes around ball -->
+  <circle cx="56" cy="24" r="3" fill="#69F0AE"/>
+  <circle cx="80" cy="40" r="3" fill="#69F0AE"/>
+  <circle cx="76" cy="68" r="3" fill="#69F0AE"/>
+  <circle cx="36" cy="68" r="3" fill="#69F0AE"/>
+  <circle cx="32" cy="40" r="3" fill="#69F0AE"/>
+  <!-- Connection lines -->
+  <line x1="56" y1="27" x2="56" y2="36" stroke="#69F0AE" stroke-width="0.8" opacity="0.4"/>
+  <line x1="77" y1="41" x2="68" y2="47" stroke="#69F0AE" stroke-width="0.8" opacity="0.4"/>
+  <line x1="74" y1="67" x2="66" y2="62" stroke="#69F0AE" stroke-width="0.8" opacity="0.4"/>
+  <line x1="38" y1="67" x2="46" y2="62" stroke="#69F0AE" stroke-width="0.8" opacity="0.4"/>
+  <line x1="35" y1="41" x2="44" y2="47" stroke="#69F0AE" stroke-width="0.8" opacity="0.4"/>
+
+  <!-- Text: LIBERO -->
+  <text x="100" y="72" font-family="Outfit, sans-serif" font-size="48" font-weight="800" fill="#E8F5E9" letter-spacing="-1">LIBERO</text>
+
+  <!-- Tagline -->
+  <text x="100" y="92" font-family="Inter, sans-serif" font-size="12" fill="#4A6B58" letter-spacing="2">DECENTRALIZED FOOTBALL OS</text>
+</svg>

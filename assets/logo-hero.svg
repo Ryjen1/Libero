@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" fill="none">
+  <rect width="600" height="200" rx="20" fill="#080C0A"/>
+
+  <!-- Subtle grid background -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1B3325" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="200" rx="20" fill="url(#grid)" opacity="0.3"/>
+
+  <!-- Glow -->
+  <circle cx="300" cy="100" r="120" fill="#00E676" opacity="0.04"/>
+
+  <!-- Football icon -->
+  <circle cx="100" cy="100" r="48" fill="#00E676" opacity="0.1"/>
+  <circle cx="100" cy="100" r="36" stroke="#00E676" stroke-width="2.5" fill="none"/>
+  <path d="M100 64 L116 74 L112 94 L88 94 L84 74 Z" stroke="#00E676" stroke-width="2" fill="none"/>
+  <line x1="100" y1="64" x2="100" y2="52" stroke="#00E676" stroke-width="2"/>
+  <line x1="116" y1="74" x2="126" y2="66" stroke="#00E676" stroke-width="2"/>
+  <line x1="112" y1="94" x2="120" y2="108" stroke="#00E676" stroke-width="2"/>
+  <line x1="88" y1="94" x2="80" y2="108" stroke="#00E676" stroke-width="2"/>
+  <line x1="84" y1="74" x2="74" y2="66" stroke="#00E676" stroke-width="2"/>
+
+  <!-- P2P nodes -->
+  <circle cx="100" cy="42" r="4" fill="#69F0AE"/>
+  <circle cx="130" cy="66" r="4" fill="#69F0AE"/>
+  <circle cx="124" cy="108" r="4" fill="#69F0AE"/>
+  <circle cx="76" cy="108" r="4" fill="#69F0AE"/>
+  <circle cx="70" cy="66" r="4" fill="#69F0AE"/>
+
+  <!-- Connection lines -->
+  <line x1="100" y1="46" x2="100" y2="62" stroke="#69F0AE" stroke-width="1" opacity="0.3"/>
+  <line x1="127" y1="68" x2="118" y2="76" stroke="#69F0AE" stroke-width="1" opacity="0.3"/>
+  <line x1="121" y1="107" x2="114" y2="98" stroke="#69F0AE" stroke-width="1" opacity="0.3"/>
+  <line x1="79" y1="107" x2="86" y2="98" stroke="#69F0AE" stroke-width="1" opacity="0.3"/>
+  <line x1="73" y1="68" x2="82" y2="76" stroke="#69F0AE" stroke-width="1" opacity="0.3"/>
+
+  <!-- Text: LIBERO -->
+  <text x="175" y="115" font-family="Outfit, sans-serif" font-size="72" font-weight="900" fill="#E8F5E9" letter-spacing="-2">LIBERO</text>
+
+  <!-- Tagline -->
+  <text x="178" y="145" font-family="Inter, sans-serif" font-size="16" fill="#4A6B58" letter-spacing="3">DECENTRALIZED FOOTBALL OS</text>
+
+  <!-- Accent line -->
+  <rect x="178" y="155" width="80" height="2" rx="1" fill="#00E676" opacity="0.6"/>
+</svg>

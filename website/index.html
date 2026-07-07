@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Libero — Decentralized Football Operating System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__brand">
+        <span class="nav__logo">⚽</span>
+        <span class="nav__name">Libero</span>
+      </a>
+      <div class="nav__links">
+        <a href="#features" class="nav__link">Features</a>
+        <a href="#how-it-works" class="nav__link">How It Works</a>
+        <a href="#prediction-market" class="nav__link">Prediction Market</a>
+        <a href="#download" class="nav__cta">Download App</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="hero__glow"></div>
+      <div class="hero__grid"></div>
+    </div>
+    <div class="hero__content">
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        Tether Developers Cup 2026
+      </div>
+      <h1 class="hero__title">
+        The Football OS<br />
+        <span class="hero__title--accent">That Runs Itself</span>
+      </h1>
+      <p class="hero__subtitle">
+        Peer-to-peer match tracking. On-device AI analysis. Self-custodial payments.
+        No servers. No中间商. Just football.
+      </p>
+      <div class="hero__actions">
+        <a href="#download" class="btn btn--primary btn--lg">
+          Download for Free
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v7m0 0l-3-3m3 3l3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#how-it-works" class="btn btn--ghost btn--lg">See How It Works</a>
+      </div>
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <span class="hero__stat-value">3</span>
+          <span class="hero__stat-label">Tracks Integrated</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-value">0</span>
+          <span class="hero__stat-label">Central Servers</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-value">100%</span>
+          <span class="hero__stat-label">On-Device AI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Features ────────────────────────────────────────────────────── -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Features</span>
+        <h2 class="section-title">Three tracks.<br /><span class="text--accent">One mechanic.</span></h2>
+        <p class="section-desc">
+          Every feature feeds into the next. P2P data powers AI analysis. AI triggers wallet settlements.
+          The wallet is the trust layer. No other football platform does this.
+        </p>
+      </div>
+
+      <div class="features__grid">
+        <div class="feature-card feature-card--large">
+          <div class="feature-card__icon">📡</div>
+          <h3 class="feature-card__title">P2P Match Engine</h3>
+          <p class="feature-card__desc">
+            Built on Hyperswarm and Hypercore. Every device is a node. Match events replicate
+            peer-to-peer in real-time. Works offline at local pitches with zero internet.
+          </p>
+          <div class="feature-card__tag">Pears Stack</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card__icon">🧠</div>
+          <h3 class="feature-card__title">Local AI Analyst</h3>
+          <p class="feature-card__desc">
+            QVAC SDK runs LLaMA 3.2 on your device. Tactical analysis, win probability,
+            formation insights — all without cloud APIs or data leakage.
+          </p>
+          <div class="feature-card__tag">QVAC</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card__icon">💰</div>
+          <h3 class="feature-card__title">Self-Custodial Wallet</h3>
+          <p class="feature-card__desc">
+            WDK powers real USDT payments. Tip players, pay referees, stake on predictions.
+            Your keys, your funds, your rules.
+          </p>
+          <div class="feature-card__tag">WDK</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How It Works ────────────────────────────────────────────────── -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">How It Works</span>
+        <h2 class="section-title">From kickoff<br /><span class="text--accent">to settlement.</span></h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__number">01</div>
+          <div class="step__content">
+            <h3 class="step__title">Create a Match Room</h3>
+            <p class="step__desc">
+              Open Libero. Your device becomes a node. Share the topic with other fans —
+              they connect peer-to-peer via Hyperswarm.
+            </p>
+          </div>
+        </div>
+
+        <div class="step__connector"></div>
+
+        <div class="step">
+          <div class="step__number">02</div>
+          <div class="step__content">
+            <h3 class="step__title">Log Events Live</h3>
+            <p class="step__desc">
+              Goals, cards, substitutions — one fan logs them, every connected device receives
+              them instantly. No server required.
+            </p>
+          </div>
+        </div>
+
+        <div class="step__connector"></div>
+
+        <div class="step">
+          <div class="step__number">03</div>
+          <div class="step__content">
+            <h3 class="step__title">AI Analyzes in Real-Time</h3>
+            <p class="step__desc">
+              The local LLM reads the event feed and generates tactical insights.
+              Formation analysis, win probability, tactical recommendations — all on-device.
+            </p>
+          </div>
+        </div>
+
+        <div class="step__connector"></div>
+
+        <div class="step">
+          <div class="step__number">04</div>
+          <div class="step__content">
+            <h3 class="step__title">Predictions Auto-Settle</h3>
+            <p class="step__desc">
+              Fans stake on outcomes. When the P2P feed confirms an event, the AI detects it
+              and the wallet auto-settles. Winner gets paid. No house. No counterparty risk.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Prediction Market ───────────────────────────────────────────── -->
+  <section class="prediction-section" id="prediction-market">
+    <div class="container">
+      <div class="pred-hero">
+        <div class="pred-hero__visual">
+          <div class="pred-card-demo">
+            <div class="pred-card-demo__header">
+              <span class="pred-card-demo__badge pred-card-demo__badge--live">LIVE</span>
+              <span class="pred-card-demo__time">67'</span>
+            </div>
+            <div class="pred-card-demo__question">Next goal before 70'?</div>
+            <div class="pred-card-demo__sides">
+              <div class="pred-card-demo__side pred-card-demo__side--yes">
+                <span class="pred-card-demo__side-label">YES</span>
+                <span class="pred-card-demo__side-stake">5 USDT</span>
+              </div>
+              <div class="pred-card-demo__vs">VS</div>
+              <div class="pred-card-demo__side pred-card-demo__side--no">
+                <span class="pred-card-demo__side-label">NO</span>
+                <span class="pred-card-demo__side-stake">5 USDT</span>
+              </div>
+            </div>
+            <div class="pred-card-demo__result">
+              <span class="pred-card-demo__result-icon">✓</span>
+              <span>GOAL at 67' — YES wins 10 USDT</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pred-hero__content">
+          <span class="section-tag">Prediction Market</span>
+          <h2 class="section-title">No house.<br /><span class="text--accent">No server.</span><br />No counterparty risk.</h2>
+          <p class="section-desc">
+            Fans predict outcomes. Both sides stake USDT via self-custodial escrow.
+            When the P2P feed confirms an event, the AI detects it and the wallet
+            auto-settles. Peer-to-peer trust, enforced by code.
+          </p>
+          <div class="pred-hero__features">
+            <div class="pred-feature">
+              <span class="pred-feature__icon">🔒</span>
+              <span>Escrow via WDK</span>
+            </div>
+            <div class="pred-feature">
+              <span class="pred-feature__icon">⚡</span>
+              <span>Auto-settlement</span>
+            </div>
+            <div class="pred-feature">
+              <span class="pred-feature__icon">🌐</span>
+              <span>P2P resolution</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Tech Stack ──────────────────────────────────────────────────── -->
+  <section class="tech-stack">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Built On</span>
+        <h2 class="section-title">The Tether<br /><span class="text--accent">Developer Stack.</span></h2>
+      </div>
+
+      <div class="stack-grid">
+        <div class="stack-card">
+          <div class="stack-card__logo">Pear</div>
+          <h4 class="stack-card__name">Pears Stack</h4>
+          <p class="stack-card__desc">Hyperswarm, Hypercore, Autobase</p>
+          <span class="stack-card__track">P2P Track</span>
+        </div>
+        <div class="stack-card">
+          <div class="stack-card__logo">QVAC</div>
+          <h4 class="stack-card__name">QVAC SDK</h4>
+          <p class="stack-card__desc">LLaMA 3.2 1B, local inference</p>
+          <span class="stack-card__track">Local AI Track</span>
+        </div>
+        <div class="stack-card">
+          <div class="stack-card__logo">WDK</div>
+          <h4 class="stack-card__name">Wallet Dev Kit</h4>
+          <p class="stack-card__desc">Multi-chain, self-custodial</p>
+          <span class="stack-card__track">Wallets Track</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Download / CTA ─────────────────────────────────────────────── -->
+  <section class="download" id="download">
+    <div class="container">
+      <div class="download__card">
+        <div class="download__glow"></div>
+        <h2 class="download__title">Ready to play?</h2>
+        <p class="download__desc">
+          Download Libero, run it with Pear, and connect to the decentralized football network.
+        </p>
+        <div class="download__commands">
+          <div class="download__cmd">
+            <span class="download__cmd-label">Install</span>
+            <code class="download__cmd-code">pear install libero</code>
+          </div>
+          <div class="download__cmd">
+            <span class="download__cmd-label">Or build from source</span>
+            <code class="download__cmd-code">git clone https://github.com/... && pnpm install && pnpm start</code>
+          </div>
+        </div>
+        <div class="download__actions">
+          <a href="https://github.com" class="btn btn--primary btn--lg" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+          <a href="https://dorahacks.io/hackathon/tether-developers-cup/detail" class="btn btn--ghost btn--lg" target="_blank">
+            Tether Developers Cup
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ──────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <span class="nav__logo">⚽</span>
+          <span class="nav__name">Libero</span>
+        </div>
+        <p class="footer__copy">
+          Built for the Tether Developers Cup 2026. Open source under MIT.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
