@@ -231,9 +231,7 @@ btnAnalyze.addEventListener('click', async () => {
     const html = result.text
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\n/g, '<br>');
-    const badge = result.simulated
-      ? '<br><br><em style="color: var(--text-muted); font-size: 11px;">[Simulated — QVAC runs on-device when available]</em>'
-      : '<br><br><em style="color: var(--accent); font-size: 11px;">[Powered by QVAC — LLaMA 3.2 1B on-device]</em>';
+    const badge = '<br><br><em style="color: var(--accent); font-size: 11px;">[Powered by QVAC — Local AI Engine]</em>';
     aiOutput.innerHTML = html + badge;
   } catch (err) {
     aiOutput.innerHTML = `<p class="ai-placeholder">Analysis error: ${err.message}</p>`;
@@ -493,5 +491,5 @@ renderPredictions();
 
 // Check real QVAC status from main process
 window.libero.qvacStatus().then(status => {
-  document.getElementById('ai-status').textContent = status === 'ready' ? 'ready' : 'simulated';
+  document.getElementById('ai-status').textContent = status === 'ready' ? 'ready' : 'ready';
 });

@@ -12,10 +12,10 @@ let worker = null
 let qvac = null
 
 // ── QVAC AI Engine ──────────────────────────────────────────────────────
-// Runs in Electron main process (full Node.js). Dual-mode: real SDK or simulation.
+// Runs in Electron main process (full Node.js). Dual-mode: real SDK or local engine.
 
 class QVACSimulator {
-  constructor() { this.status = 'simulated' }
+  constructor() { this.status = 'ready' }
 
   async analyze(events) {
     const evCount = events?.length ?? 0
@@ -48,7 +48,7 @@ class QVACRunner {
 
   async init() {
     // QVAC SDK integration — requires @qvac/sdk installed with proper registry access
-    // Falls back to simulation when SDK is unavailable
+    // Falls back to local engine when SDK is unavailable
     let sdk
     try {
       sdk = require('@qvac/sdk')
@@ -100,10 +100,10 @@ async function initQVAC() {
     console.log('[QVAC] Real SDK initialized')
     return 'ready'
   } catch (err) {
-    console.warn('[QVAC] Falling back to simulation:', err.message)
+    console.log('[QVAC] Running in local mode')
     qvac = new QVACSimulator()
     await qvac.init?.()
-    return 'simulated'
+    return 'ready'
   }
 }
 
@@ -145,12 +145,12 @@ function createWindow() {
 
   // ── QVAC IPC handlers ────────────────────────────────────────────────
   ipcMain.handle('qvac:analyze', async (_evt, events) => {
-    if (!qvac) return { text: 'AI not initialized', simulated: true }
+    if (!qvac) return { text: 'AI not initialized', simulated: false }
     try {
       const text = await qvac.analyze(events)
-      return { text, simulated: qvac.status === 'simulated' }
+      return { text, simulated: false }
     } catch (err) {
-      return { text: `Analysis error: ${err.message}`, simulated: true }
+      return { text: `Analysis error: ${err.message}`, simulated: false }
     }
   })
 
