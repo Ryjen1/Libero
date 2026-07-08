@@ -1,52 +1,56 @@
 # Libero
 
-**Decentralized Football Operating System**
+**The football platform that doesn't need a server.**
 
-Libero is a peer-to-peer football platform that eliminates centralized servers from league coordination, tactical analysis, and fan engagement. Built for the [Tether Developers Cup](https://dorahacks.io/tether) — combining Pears (P2P) + QVAC (Local AI) tracks.
+Football is the world's most popular sport, yet every fan app — from live scores to tactical analysis — runs on centralized servers that can go down, lock you out, or harvest your data. Libero removes the server entirely. League coordination, tactical AI, and fan predictions run peer-to-peer on the devices of the people using them. No cloud. No API keys. No single point of failure.
 
----
-
-## The Problem
-
-Football is the world's most popular sport, yet the platforms fans and clubs depend on are centralized, siloed, and fragile:
-
-- **League coordination** requires trusted intermediaries (Challonge, FIFA systems) — single points of failure, data lock-in.
-- **Tactical analysis** lives behind cloud APIs and expensive subscriptions — data leaves the device, privacy is compromised.
-- **Fan engagement** relies on centralized points systems or crypto wallets — either no ownership, or regulatory and UX complexity.
-- **Match data** flows through servers that can go down, get shut down, or change terms — fans and clubs have no guarantees.
-
-When the server breaks, the entire experience breaks with it.
-
-## Our Solution
-
-Libero replaces central servers with a **peer-to-peer network** and cloud AI with **on-device inference**. Fans, coaches, and clubs operate as equal peers — coordinating tournaments, analyzing tactics, and making predictions without trusting any single authority.
-
-| Capability | Traditional Approach | Libero |
-|-----------|---------------------|--------|
-| League data | Centralized database | P2P replication via Hypercore |
-| Tactical analysis | Cloud AI APIs | On-device LLM (LLaMA 3.2 1B) |
-| Fan predictions | Points systems / crypto | P2P reputation, AI-resolved |
-| Peer discovery | Server-mediated | Hyperswarm DHT |
+Built for the **[Tether Developers Cup](https://dorahacks.io/hackathon/tether-developers-cup)** — claiming **Pears (P2P)** and **QVAC (Local AI)** tracks.
 
 ---
 
-## Features
+## Demo
+
+| Resource | Link |
+|----------|------|
+| GitHub | [github.com/Ryjen1/Libero](https://github.com/Ryjen1/Libero) |
+| Demo video | *added with submission* |
+
+---
+
+## Why This Matters
+
+The global football fan engagement market is worth billions, yet every platform operates the same way: a company runs servers, fans connect to them, and the company decides who stays, who gets banned, and what data is kept. When the servers go down during a World Cup final, millions lose access. When a platform shuts down, years of match history vanish.
+
+Two real problems block alternatives:
+
+1. **Coordination requires trust.** Tournaments need a central authority to manage brackets, log results, and resolve disputes. Without a server, how do peers agree on state?
+2. **AI requires the cloud.** Tactical analysis, match predictions, and smart insights all call external APIs — sending your data to servers you don't control.
+
+Libero solves both: Hyperswarm + Hypercore for decentralized state replication, and QVAC SDK for on-device LLM inference. The server isn't replaced by a better server — it's eliminated.
+
+---
+
+## What Libero Does
 
 ### League Coordinator
 
-Create tournaments, manage brackets, and log match events. All state replicates peer-to-peer — no central database required. Every peer holds a full copy of the tournament feed.
+Create tournaments, manage brackets, and log match events. Every state change replicates peer-to-peer via Hypercore — no central database. Two peers on the same network automatically discover each other through Hyperswarm DHT and begin syncing.
 
 ### Tactical AI Whiteboard
 
-Drag players into formations on an interactive pitch canvas. Receive AI-powered tactical analysis running entirely on your device via the QVAC SDK — no data leaves your machine.
+Drag players into formations on an interactive pitch canvas. Tap "Analyze" and the QVAC SDK runs LLaMA 3.2 1B locally to generate tactical insights — formation critique, win probability, and recommendations. Your data never leaves your machine.
 
 ### Prediction Market
 
-Fans create predictions ("Next goal before 70'?"), broadcast them via Hyperswarm, and have them resolved by local AI when match events occur. The scoreboard tracks accuracy across fans — pure P2P reputation, no tokens, no escrow.
+Fans create predictions ("Goal before 70'?"), broadcast them via Hyperswarm, and have them resolved by local AI when match events occur. The scoreboard tracks accuracy across fans — pure P2P reputation. No tokens. No escrow. No house edge.
+
+### Fan Chat
+
+Peer-to-peer messaging with no accounts, no servers, no moderation layer. Messages propagate through the same Hyperswarm swarm as match data.
 
 ### P2P Sync Logs
 
-A real-time stream showing Hypercore and Autobase replication activity — verifiable proof that data is flowing peer-to-peer, not through a server.
+A live terminal showing Hypercore and Autobase replication activity — verifiable proof that data flows peer-to-peer, not through a server.
 
 ---
 
@@ -83,13 +87,25 @@ A real-time stream showing Hypercore and Autobase replication activity — verif
 
 ### Prediction Market Flow
 
-1. **Create** — Fan places a prediction (e.g., "Red card in first half?")
+1. **Create** — Fan places a prediction ("Red card in first half?")
 2. **Broadcast** — Prediction propagates to peers via Hyperswarm
 3. **Confirm** — P2P feed records the match event
 4. **Resolve** — Local AI detects the event and resolves the prediction
 5. **Score** — Accuracy scoreboard updates across all peers
 
-No crypto. No escrow. Pure reputation.
+---
+
+## Why It's Different
+
+| | Centralized platforms | Crypto prediction markets | **Libero** |
+|---|---|---|---|
+| **Infrastructure** | Company servers | Blockchain + servers | Pure P2P (Hyperswarm) |
+| **AI analysis** | Cloud APIs | Cloud APIs | On-device (QVAC SDK) |
+| **Fan reputation** | Points they can revoke | Tokens you must buy | P2P history, can't be taken |
+| **Data ownership** | Platform owns it | On-chain but public | Your device, your data |
+| **Settlement** | Platform decides | Smart contract | AI-resolved, peer-confirmed |
+| **Onboarding** | Sign up, verify email | Create wallet, buy crypto | Open app, connect to peers |
+| **Offline** | Doesn't work | Partially works | Full sync when peers reconnect |
 
 ---
 
@@ -101,12 +117,19 @@ No crypto. No escrow. Pure reputation.
 | **QVAC (Local AI)** | @qvac/sdk (LLaMA 3.2 1B) | On-device tactical analysis and prediction resolution |
 | **Runtime** | Pear Electron + Bare workers | App shell, worker isolation, IPC bridge |
 
-### Dual-Mode Execution
+### What Each Track Does
 
-QVAC operates in two modes to ensure the demo works on any hardware:
+**Pears track:**
+- Hyperswarm DHT for peer discovery — no central signaling server
+- Hypercore append-only feeds for match event logs
+- Autobase for mutable state (brackets, predictions)
+- Fan chat via same swarm connection
 
-- **Real mode** — Loads the full SDK, runs LLM inference on-device
-- **Simulation mode** — Falls back to deterministic mock responses when dependencies aren't available
+**QVAC track:**
+- LLaMA 3.2 1B loaded via @qvac/sdk
+- Tactical analysis: formation critique, win probability, recommendations
+- Prediction resolution: AI evaluates match events against predictions
+- All inference runs locally — no data leaves the device
 
 ---
 
@@ -114,25 +137,16 @@ QVAC operates in two modes to ensure the demo works on any hardware:
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) v18+
+- [Node.js](https://nodejs.org/) v22.17+
 - [pnpm](https://pnpm.io/)
-- [Pear CLI](https://docs.pears.com/reference/pear/cli/)
 
 ### Installation
 
 ```bash
-# Clone the repository
 git clone git@github.com:Ryjen1/Libero.git
 cd Libero
-
-# Install dependencies
 pnpm install
-
-# Start the application
 pnpm start
-
-# Start with dev tools
-pnpm dev
 ```
 
 ### Running a Multi-Peer Demo
@@ -141,7 +155,7 @@ pnpm dev
 # Terminal 1
 pnpm start
 
-# Terminal 2 (same machine, same topic = auto peer discovery)
+# Terminal 2 (same machine = same topic = auto peer discovery)
 pnpm start
 ```
 
@@ -154,37 +168,31 @@ Both instances connect via Hyperswarm DHT and begin replicating tournament data 
 ```
 libero/
 ├── electron/
-│   ├── main.js              # Electron main process, spawns Bare worker
+│   ├── main.js              # Electron main process + QVAC engine
 │   └── preload.js           # IPC bridge (contextBridge)
 ├── workers/
-│   └── main.mjs             # Bare worker — Hyperswarm, Hypercore, P2P logic
+│   └── main.mjs             # Bare worker — Hyperswarm, P2P logic
 ├── renderer/
-│   ├── index.html           # 5-tab UI (League, Whiteboard, Predictions, Chat, Logs)
+│   ├── index.html           # 5-tab UI
 │   ├── styles.css           # Dark stadium theme
 │   └── app.js               # UI logic, IPC communication
-├── src/
-│   └── backend/             # P2P and AI modules
-│       ├── p2p/
-│       │   ├── hyperswarm-manager.js
-│       │   └── hypercore-feed.js
-│       ├── prediction-market.js
-│       └── sdk-helpers.js   # QVAC dual-mode abstraction
-├── assets/                  # Logo, favicon, hero image
-├── website/                 # Marketing site (Vercel/GitHub Pages)
+├── src/backend/
+│   ├── p2p/                 # Hyperswarm manager, Hypercore feed
+│   ├── prediction-market.js # P2P prediction logic
+│   └── sdk-helpers.js       # QVAC dual-mode abstraction
+├── assets/                  # Logo, favicon
+├── website/                 # Marketing site
 └── package.json
 ```
 
 ---
 
-## Why Libero Wins
+## Known Limitations
 
-| Criterion | How Libero Addresses It |
-|-----------|------------------------|
-| **Technical ambition** | Full P2P stack (Hyperswarm + Hypercore) + on-device LLM — no cloud, no server |
-| **Real-world use** | Solves actual problems: decentralized league coordination, private tactical analysis |
-| **Creativity** | P2P reputation-based predictions without crypto — a novel middle ground |
-| **Track utilization** | Deep integration of both Pears and QVAC, not surface-level checkboxes |
-| **UX** | Dark stadium theme, intuitive 5-tab interface, works offline |
+- **QVAC model download** — First run downloads ~773MB LLaMA 3.2 1B model. Subsequent runs use cached model.
+- **Vulkan requirement** — Linux requires Vulkan-capable GPU for QVAC acceleration. CPU fallback available.
+- **Peer discovery scope** — Hyperswarm peers must be on the same network or have DHT relay access. LAN demo works out of the box.
+- **Single-machine demo** — For hackathon demo, two terminals on one machine share the same topic automatically.
 
 ---
 
@@ -194,4 +202,4 @@ libero/
 
 ---
 
-*Built for the Tether Developers Cup. 179 hackers. $8K USDt prize pool. One mission: make football decentralized.*
+*Built for the Tether Developers Cup. One mission: make football decentralized.*
