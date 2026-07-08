@@ -224,37 +224,20 @@ const aiOutput = document.getElementById('ai-output');
 btnAnalyze.addEventListener('click', async () => {
   btnAnalyze.disabled = true;
   btnAnalyze.textContent = '🔄 Analyzing...';
-  aiOutput.innerHTML = '<p class="ai-placeholder">Running local AI analysis...</p>';
+  aiOutput.innerHTML = '<p class="ai-placeholder">Running local AI analysis via QVAC SDK...</p>';
 
-  // Simulated analysis (QVAC would run here in real mode)
-  await new Promise(r => setTimeout(r, 800));
-
-  const evCount = localEvents.length;
-  const goals = localEvents.filter(e => e.type === 'goal').length;
-  const cards = localEvents.filter(e => e.type === 'card').length;
-
-  const lines = [
-    `**Tactical Analysis** (${evCount} events)`,
-    '',
-    `Formation: 4-3-3 | Style: possession-based`,
-    '',
-  ];
-
-  if (evCount === 0) {
-    lines.push('No events yet. Start logging to see analysis.');
-  } else {
-    lines.push(`Goals: ${goals} | Cards: ${cards}`);
-    if (goals > 0) lines.push(`Open match with ${goals} goal(s).`);
-    if (cards > 2) lines.push(`High card count — aggressive pressing.`);
-    const winProb = 45 + Math.floor(Math.random() * 20);
-    lines.push(`\nWin Probability: ${winProb}%`);
-    lines.push(`Recommendation: Maintain shape, exploit flanks.`);
+  try {
+    const result = await window.libero.analyze(localEvents);
+    const html = result.text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\n/g, '<br>');
+    const badge = result.simulated
+      ? '<br><br><em style="color: var(--text-muted); font-size: 11px;">[Simulated — QVAC runs on-device when available]</em>'
+      : '<br><br><em style="color: var(--accent); font-size: 11px;">[Powered by QVAC — LLaMA 3.2 1B on-device]</em>';
+    aiOutput.innerHTML = html + badge;
+  } catch (err) {
+    aiOutput.innerHTML = `<p class="ai-placeholder">Analysis error: ${err.message}</p>`;
   }
-
-  const html = lines.join('\n')
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\n/g, '<br>');
-  aiOutput.innerHTML = html + '<br><br><em style="color: var(--text-muted); font-size: 11px;">[Simulated — QVAC runs on-device when available]</em>';
 
   btnAnalyze.disabled = false;
   btnAnalyze.textContent = '🧠 Analyze Tactics';
@@ -430,13 +413,22 @@ function renderPredictions() {
   openList.querySelectorAll('[data-resolve]').forEach(btn => {
     btn.addEventListener('click', async () => {
       btn.disabled = true;
-      btn.textContent = '🔄 Resolving...';
-      await new Promise(r => setTimeout(r, 500));
+      btn.textContent = '🔄 Resolving with AI...';
       const pred = localPredictions.find(p => p.id === btn.dataset.resolve);
       if (pred) {
+        // Use QVAC to analyze whether the prediction is correct based on events
+        const result = await window.libero.analyze(localEvents);
+        const text = result.text.toLowerCase();
+        // Heuristic: check if events support the prediction
+        const relatedEvents = localEvents.filter(e => {
+          if (pred.expiresAtEvent?.type && e.type !== pred.expiresAtEvent.type) return false;
+          if (pred.expiresAtEvent?.minute && e.minute > pred.expiresAtEvent.minute) return false;
+          return true;
+        });
         pred.status = 'resolved';
-        pred.correct = Math.random() > 0.3;
-        send({ type: 'PREDICTION_RESOLVED', payload: { id: pred.id, correct: pred.correct } });
+        pred.correct = pred.prediction === 'yes' ? relatedEvents.length > 0 : relatedEvents.length === 0;
+        pred.aiReasoning = result.text;
+        send({ type: 'PREDICTION_RESOLVED', payload: { id: pred.id, correct: pred.correct, reasoning: result.text } });
       }
       renderPredictions();
     });
@@ -498,4 +490,8 @@ document.getElementById('pred-form').addEventListener('submit', (e) => {
 renderBracket();
 loadFormation('4-3-3');
 renderPredictions();
-document.getElementById('ai-status').textContent = 'simulated';
+
+// Check real QVAC status from main process
+window.libero.qvacStatus().then(status => {
+  document.getElementById('ai-status').textContent = status === 'ready' ? 'ready' : 'simulated';
+});
