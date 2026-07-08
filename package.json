@@ -11,7 +11,8 @@
   "dependencies": {
     "pear-runtime": "^1.1.4",
     "hyperswarm": "^4.17.0",
-    "b4a": "^1.6.7"
+    "b4a": "^1.6.7",
+    "@qvac/sdk": "^0.14.1"
   },
   "devDependencies": {
     "electron": "^43.0.0"
